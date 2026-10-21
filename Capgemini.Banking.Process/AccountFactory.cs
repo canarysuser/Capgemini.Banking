@@ -18,7 +18,7 @@ namespace Capgemini.Banking.Process
                 acc = new /*Account*/ Savings(id, name, type, balance);
             } else if(type==AccountType.Current && balance > 9999)
             {
-                acc = new Account(id, name, type, balance);
+                acc = new Current(id, name, type, balance);
             }
             return acc!; 
         }

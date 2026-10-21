@@ -9,7 +9,7 @@ namespace Banking.Tests
         public void TestDepositMethodWithValidValues()
         {
             //Arrange 
-            Account acc = new Account(
+            Account acc = AccountFactory.Create(
                 id: 100, 
                 name: "Sample", 
                 type: Capgemini.Banking.Common.AccountType.Savings,
@@ -29,12 +29,12 @@ namespace Banking.Tests
         [TestMethod]
         public void TestFundTransferWithValidValues()
         {
-            Account acc1 = new Account(
+            Account acc1 = /*new Account*/AccountFactory.Create(
                id: 100,
                name: "Sample",
                type: Capgemini.Banking.Common.AccountType.Savings,
                balance: 5000);
-            Account acc2 = new Account(
+            Account acc2 = AccountFactory.Create(
                id: 100,
                name: "Sample",
                type: Capgemini.Banking.Common.AccountType.Savings,
