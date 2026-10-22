@@ -9,7 +9,7 @@ namespace Banking.Tests
         public void TestDepositMethodWithValidValues()
         {
             //Arrange 
-            Account acc = AccountFactory.Create(
+           IAccount acc = AccountFactory.Create(
                 id: 100, 
                 name: "Sample", 
                 type: Capgemini.Banking.Common.AccountType.Savings,
@@ -29,12 +29,12 @@ namespace Banking.Tests
         [TestMethod]
         public void TestFundTransferWithValidValues()
         {
-            Account acc1 = /*new Account*/AccountFactory.Create(
+           IAccount acc1 = /*new Account*/AccountFactory.Create(
                id: 100,
                name: "Sample",
                type: Capgemini.Banking.Common.AccountType.Savings,
                balance: 5000);
-            Account acc2 = AccountFactory.Create(
+           IAccount acc2 = AccountFactory.Create(
                id: 100,
                name: "Sample",
                type: Capgemini.Banking.Common.AccountType.Savings,
@@ -56,7 +56,7 @@ namespace Banking.Tests
         public void TestAccountCreationWithInvalidValues()
         {
             //Arrange 
-            Account acc1 = AccountFactory.Create(
+           IAccount acc1 = AccountFactory.Create(
                id: 100,
                name: "Sample",
                type: Capgemini.Banking.Common.AccountType.Savings,
@@ -69,7 +69,7 @@ namespace Banking.Tests
         [TestMethod]
         public void TestSavingsAccountWithdrawRuleWithInvalidValues()
         {
-            Account acc = AccountFactory.Create(
+           IAccount acc = AccountFactory.Create(
                id: 100,
                name: "Sample",
                type: Capgemini.Banking.Common.AccountType.Savings,
@@ -83,7 +83,7 @@ namespace Banking.Tests
         [TestMethod]
         public void TestSavingsAccountWithdrawRuleWithValidValues()
         {
-            Account acc = AccountFactory.Create(
+           IAccount acc = AccountFactory.Create(
                id: 100,
                name: "Sample",
                type: Capgemini.Banking.Common.AccountType.Savings,

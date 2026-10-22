@@ -9,7 +9,7 @@ namespace Capgemini.Banking.Process
 {
     public class AccountFactory
     {
-        public static Account Create(int id, string name, 
+        public static IAccount Create(int id, string name, 
             AccountType type, double balance)
         {
             Account acc = null!; 
@@ -19,8 +19,11 @@ namespace Capgemini.Banking.Process
             } else if(type==AccountType.Current && balance > 9999)
             {
                 acc = new Current(id, name, type, balance);
+            } else
+            {
+                throw new InsufficientFundsException(id, balance); 
             }
-            return acc!; 
+                return acc!; 
         }
     }
 }

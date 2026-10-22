@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace Capgemini.Banking.Process
 {
-    public abstract class Account
+    public abstract class Account : IAccount
     {
-        /*private*/ protected AccountInfo _info;
+        /*private*/
+        protected AccountInfo _info;
 
         public Account(int id, string name, AccountType type, double balance)
         {
@@ -23,19 +24,19 @@ namespace Capgemini.Banking.Process
         public void Deposit(double amount) { _info.Balance += amount; }
         public abstract void Withdraw(double amount);
         //{
-            //_info.Balance -= amount;
-            /*if (_info.AccountType == AccountType.Savings && (_info.Balance - amount > 999))
-            {
-                _info.Balance -= amount;
-            } else if (_info.AccountType == AccountType.Current && (_info.Balance - amount > 4999))
-            {
-                _info.Balance -= amount;
-            } else
-            {
-                //Do nothing.
-            }*/
-       // }
-        public void FundTransfer(Account target, double amount)
+        //_info.Balance -= amount;
+        /*if (_info.AccountType == AccountType.Savings && (_info.Balance - amount > 999))
+        {
+            _info.Balance -= amount;
+        } else if (_info.AccountType == AccountType.Current && (_info.Balance - amount > 4999))
+        {
+            _info.Balance -= amount;
+        } else
+        {
+            //Do nothing.
+        }*/
+        // }
+        public void FundTransfer(IAccount target, double amount)
         {
             this.Withdraw(amount);
             target.Deposit(amount);

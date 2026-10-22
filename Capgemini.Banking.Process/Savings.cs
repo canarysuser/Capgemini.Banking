@@ -24,6 +24,9 @@ namespace Capgemini.Banking.Process
             } else
             {
                 //TODO: Complete the else part of Savings.
+                throw new InsufficientFundsException(
+                    accountId: _info.AccountId,
+                    amount: amount); 
             }
         }
     }
