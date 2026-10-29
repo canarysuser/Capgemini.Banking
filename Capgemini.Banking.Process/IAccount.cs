@@ -1,4 +1,6 @@
-﻿namespace Capgemini.Banking.Process
+﻿using Capgemini.Banking.Common;
+
+namespace Capgemini.Banking.Process
 {
     public interface IAccount
     {
@@ -7,5 +9,9 @@
         double GetBalance();
         string ToString();
         void Withdraw(double amount);
+        //Declare the events 
+        event TransactionDelegate DepositEvent;
+        event TransactionDelegate WithdrawEvent;
+        //
     }
 }

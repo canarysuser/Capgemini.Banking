@@ -31,7 +31,7 @@ do
                     Console.WriteLine(ex.CustomMessage);
                 }
                 break;
-            case 2: Withdraw(); break;
+            case 2: Deposit(); break;
             case 3: Withdraw(); break;
         }
     }
@@ -76,6 +76,9 @@ static void Deposit()
     try
     {
         IAccount acc = AddNewAccount();
+        //Subscription being added here. 
+        acc.DepositEvent += (e) => Console.WriteLine(e); 
+
         Console.Write("\nAmount to deposit: ");
         double amount = double.Parse(Console.ReadLine()!);
         acc.Deposit(amount);
@@ -126,7 +129,7 @@ static void FundTransfer()
     {
         IAccount acc1 = AddNewAccount();
         IAccount acc2 = AddNewAccount();
-       
+        
         Console.Write("\nAmount to Transfer: ");
         double amount = double.Parse(Console.ReadLine()!);
         acc1.FundTransfer(acc2, amount);

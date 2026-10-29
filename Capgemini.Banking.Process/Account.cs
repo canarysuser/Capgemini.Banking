@@ -21,7 +21,29 @@ namespace Capgemini.Banking.Process
         {
             _info = null!;
         }
-        public void Deposit(double amount) { _info.Balance += amount; }
+
+        public event TransactionDelegate DepositEvent;
+        public event TransactionDelegate WithdrawEvent;
+
+        protected void OnTransactionEvent(string transactionType, double amount)
+        {
+            TransactionEventArgs e = new TransactionEventArgs(); 
+            e.TransactionType = transactionType;
+            e.Amount = amount;
+            e.Balance = _info.Balance;
+            e.AccountId = _info.AccountId;
+            e.TransactionDate = DateTime.Now;
+            if(transactionType.StartsWith("D"))
+                DepositEvent?.Invoke(e);
+            else if(transactionType.StartsWith("W"))
+                WithdrawEvent?.Invoke(e);
+        }
+        public void Deposit(double amount) { 
+            _info.Balance += amount;
+            OnTransactionEvent("Deposit", amount);
+        }
+
+
         public abstract void Withdraw(double amount);
         //{
         //_info.Balance -= amount;
